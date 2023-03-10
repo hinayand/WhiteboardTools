@@ -1,0 +1,16 @@
+build
+dist
+.idea
+.vscode
+__pycache__
+
+build/
+Release/
+dist/*
+.idea/*
+.vscode/*
+__pycache__/*
+
+WhiteboradTools.spec
+*.ico
+*.spec
