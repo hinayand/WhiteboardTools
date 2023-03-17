@@ -20,17 +20,15 @@ def index(page: ft.Page):
 
     view = ft.View("/", controls=[
         ft.AppBar(title=ft.Text(value="白板工具箱")),
-        ft.Row(
-            [
-                ft.ElevatedButton(
+        ft.ListView([
+            ft.ElevatedButton(
                     text="系统相关", icon=ft.icons.SETTINGS, on_click=lambda _: page.go("/sys")),
-                ft.ElevatedButton(
-                    text="小工具", icon=ft.icons.EGG, on_click=lambda _: page.go("/tools")),
-                ft.ElevatedButton(
-                    text="关于", icon=ft.icons.ACCOUNT_BOX, on_click=lambda _: about()
-                )
-            ]
-        ),
+            ft.ElevatedButton(
+                text="小工具", icon=ft.icons.EGG, on_click=lambda _: page.go("/tools")),
+            ft.ElevatedButton(
+                text="关于", icon=ft.icons.ACCOUNT_BOX, on_click=lambda _: about()
+            )
+        ], expand=True, spacing=10),
         ft.Column(
             [
                 ft.Text("开发者选项", style=ft.TextThemeStyle.BODY_MEDIUM),
