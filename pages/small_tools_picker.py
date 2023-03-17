@@ -12,7 +12,7 @@ def small_tools_picker(page: ft.Page):
     dialog_tools = DialogTools.DialogTools(page)
 
     view = ft.View("/tools", [
-        ft.AppBar(title=ft.Text("白板工具箱-小工具选择"), bgcolor=ft.colors.SURFACE_VARIANT),
+        ft.AppBar(title=ft.Text("白板工具箱-小工具选择")),
         picker,
         ft.ElevatedButton("启动", icon=ft.icons.PLAY_ARROW, on_click=lambda _: launch())
     ])

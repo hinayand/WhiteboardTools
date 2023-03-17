@@ -9,10 +9,10 @@ def random_school_id(page: ft.Page):
     max_id = NumberPicker.NumberPicker(page, 100, 1, "最大学号", page.client_storage.get("max_id"))
 
     view = ft.View("/tools/random_school_id", [
-        ft.AppBar(title=ft.Text("抽学号"), bgcolor=ft.colors.SURFACE_VARIANT),
+        ft.AppBar(title=ft.Text("抽学号")),
         random_id,
         max_id.get_widget(),
-        ft.FilledTonalButton("开始抽学号", on_click=lambda _: random_choose_id()),
+        ft.ElevatedButton("开始抽学号", on_click=lambda _: random_choose_id()),
     ])
 
     def random_choose_id():

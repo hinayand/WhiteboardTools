@@ -5,8 +5,9 @@ from threading import Timer
 def dbg(page: ft.Page):
     local_view = ft.Markdown(f"{locals()}", selectable=True)
     global_view = ft.Markdown(f"{globals()}", selectable=True)
+    
     view = ft.View("/dbg", controls=[
-        ft.AppBar(title=ft.Text("Debug Page"), bgcolor=ft.colors.SURFACE_VARIANT),
+        ft.AppBar(title=ft.Text("Debug Page")),
         ft.ListView([
             local_view,
             global_view

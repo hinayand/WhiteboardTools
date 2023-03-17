@@ -19,15 +19,15 @@ def timer(page: ft.Page):
     dlg_tools = DialogTools.DialogTools(page)
 
     view = ft.View("/tools/timer", [
-        ft.AppBar(title=ft.Text("计时器"), bgcolor=ft.colors.SURFACE_VARIANT),
+        ft.AppBar(title=ft.Text("计时器")),
         ft.Text("设置", style=ft.TextThemeStyle.TITLE_MEDIUM),
         hour.get_widget(),
         minute.get_widget(),
         second.get_widget(),
-        ft.FilledTonalButton("开始计时", on_click=lambda _: start_timer()),
+        ft.ElevatedButton("开始计时", on_click=lambda _: start_timer()),
         ft.Text("计时", style=ft.TextThemeStyle.TITLE_MEDIUM),
         str_time_control,
-        ft.FilledTonalButton("停止计时", on_click=lambda _: stop_timer()),
+        ft.ElevatedButton("停止计时", on_click=lambda _: stop_timer()),
     ])
 
     def start_timer():

@@ -6,6 +6,11 @@ from pages.small_tools import clock
 
 
 def main(page: ft.Page):
+    page.fonts = {
+        "Noto Sans": "./NotoSansCJKsc-Regular.ttf"
+    }
+    page.theme = ft.Theme(use_material3=True, color_scheme_seed="white")
+
     def view_pop(view):
         page.views.pop()
         top_view = page.views[-1]
@@ -35,4 +40,4 @@ def main(page: ft.Page):
     page.go(page.route)
 
 
-ft.app(target=main, assets_dir="resource")
+ft.app(target=main, assets_dir="./resource")

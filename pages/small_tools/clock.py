@@ -9,9 +9,9 @@ def clock(page :ft.Page):
     clock = ft.Text("", style=ft.TextThemeStyle.TITLE_MEDIUM)
 
     view = ft.View("/tools/clock", [
-        ft.AppBar(title=ft.Text("时钟"), bgcolor=ft.colors.SURFACE_VARIANT),
+        ft.AppBar(title=ft.Text("时钟")),
         clock,
-        ft.FloatingActionButton("退出", icon=ft.icons.EXIT_TO_APP, on_click=lambda _: page.go("/"))
+        ft.ElevatedButton("退出", icon=ft.icons.EXIT_TO_APP, on_click=lambda _: page.go("/"))
     ])
 
     def refresh_clock():

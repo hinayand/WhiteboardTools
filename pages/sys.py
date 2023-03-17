@@ -12,7 +12,7 @@ def sys(page: ft.Page) -> ft.View:
     # page.window_width = 355
     # window_tools.size_changer(page, 420, 355, 2)
     view = ft.View("/sys", [
-        ft.AppBar(title=ft.Text("白板工具箱-系统相关"), bgcolor=ft.colors.SURFACE_VARIANT),
+        ft.AppBar(title=ft.Text("白板工具箱-系统相关")),
         ft.GridView([
             ft.ElevatedButton(text="关闭白板", icon=ft.icons.POWER_OFF, on_click=lambda _: shutdown()),
             ft.ElevatedButton(text="重启白板", icon=ft.icons.REFRESH, on_click=lambda _: restart()),
