@@ -1,4 +1,5 @@
 import flet as ft
+from flet import ThemeMode
 from pages import sys, small_tools_picker, index, dbg, setting
 from pages.small_tools import random_school_id
 from pages.small_tools import timer
@@ -10,6 +11,10 @@ def main(page: ft.Page):
         "Noto Sans": "./NotoSansCJKsc-Regular.ttf"
     }
     page.theme = ft.Theme(use_material3=True, color_scheme_seed="white")
+    if page.client_storage.get("dark_mode") == True:
+        page.theme_mode = ThemeMode.DARK
+    else:
+        page.theme_mode = ThemeMode.LIGHT
 
     def view_pop(view):
         page.views.pop()
