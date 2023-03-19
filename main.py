@@ -1,5 +1,5 @@
 import flet as ft
-from pages import sys, small_tools_picker, index, dbg
+from pages import sys, small_tools_picker, index, dbg, setting
 from pages.small_tools import random_school_id
 from pages.small_tools import timer
 from pages.small_tools import clock
@@ -33,6 +33,8 @@ def main(page: ft.Page):
                 page.views.append(clock.clock(page))
             case "/dbg":
                 page.views.append(dbg.dbg(page))
+            case "/setting":
+                page.views.append(setting.setting(page))
         page.update()
 
     page.on_route_change = route_change

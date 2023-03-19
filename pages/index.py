@@ -27,7 +27,8 @@ def index(page: ft.Page):
                 text="小工具", icon=ft.icons.EGG, on_click=lambda _: page.go("/tools")),
             ft.ElevatedButton(
                 text="关于", icon=ft.icons.ACCOUNT_BOX, on_click=lambda _: about()
-            )
+            ),
+            ft.ElevatedButton("设置", on_click=lambda _: page.go("/setting"), icon=ft.icons.SETTINGS)
         ], expand=True, spacing=10),
         ft.Column(
             [
