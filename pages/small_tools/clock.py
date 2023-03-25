@@ -6,16 +6,17 @@ import time
 
 
 def clock(page :ft.Page):
-    clock = ft.Text("", style=ft.TextThemeStyle.TITLE_MEDIUM)
+    clock = ft.Text("", style=ft.TextThemeStyle.TITLE_LARGE, text_align=ft.TextAlign.CENTER)
 
     view = ft.View("/tools/clock", [
         ft.AppBar(title=ft.Text("时钟")),
-        clock,
-        ft.ElevatedButton("退出", icon=ft.icons.EXIT_TO_APP, on_click=lambda _: page.go("/"))
+        ft.ListView([
+            clock
+        ], expand=True, spacing=5)
     ])
 
     def refresh_clock():
-        clock.value = time.strftime("当前日期：%Y-%m-%d 当前时间：%X")
+        clock.value = time.strftime("当前日期：%Y-%m-%d\n当前时间：%X")
         page.update()
         timer_obj = Timer(0.01, refresh_clock)
         timer_obj.start()

@@ -6,10 +6,10 @@ class NumberPicker(object):
         self.widget = ft.Row()
         if default_value is None:
             self.text_field = ft.TextField(
-                on_change=self._on_change, label=label, value=str(min_number))
+                on_change=self._on_change, label=label, value=str(min_number), text_align=ft.TextAlign.CENTER)
         else:
             self.text_field = ft.TextField(
-                on_change=self._on_change, label=label, value=str(default_value))
+                on_change=self._on_change, label=label, value=str(default_value), text_align=ft.TextAlign.CENTER)
         self.max_num = max_number
         self.min_num = min_number
         self.page = page

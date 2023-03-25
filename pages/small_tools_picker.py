@@ -1,24 +1,24 @@
 import flet as ft
+from flet import TapEvent
 from tools import DialogTools, window_tools
 
 
 def small_tools_picker(page: ft.Page):
     # window_tools.size_changer(page, 300, 300, 2)
-    picker = ft.Dropdown(width=250, options=[
-        ft.dropdown.Option("抽学号"),
-        ft.dropdown.Option("计时器"),
-        ft.dropdown.Option("时钟")
-    ], label="小工具选择器", hint_text="选择你要运行的小工具")
+    picker = ft.ListView([
+        ft.ElevatedButton("抽学号", on_click=lambda _: launch("抽学号")),
+        ft.ElevatedButton("计时器", on_click=lambda _: launch("计时器")),
+        ft.ElevatedButton("时钟", on_click=lambda _: launch("时钟"))
+    ], expand=True, spacing=5)
     dialog_tools = DialogTools.DialogTools(page)
 
     view = ft.View("/tools", [
         ft.AppBar(title=ft.Text("白板工具箱-小工具选择")),
-        picker,
-        ft.ElevatedButton("启动", icon=ft.icons.PLAY_ARROW, on_click=lambda _: launch())
-    ])
+        picker
+    ]) 
 
-    def launch():
-        match picker.value:
+    def launch(tool_name: str):
+        match tool_name:
             case "抽学号":
                 page.go("/tools/random_school_id")
             case "计时器":

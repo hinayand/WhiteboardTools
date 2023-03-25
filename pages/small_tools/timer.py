@@ -20,14 +20,16 @@ def timer(page: ft.Page):
 
     view = ft.View("/tools/timer", [
         ft.AppBar(title=ft.Text("计时器")),
-        ft.Text("设置", style=ft.TextThemeStyle.TITLE_MEDIUM),
-        hour.get_widget(),
-        minute.get_widget(),
-        second.get_widget(),
-        ft.ElevatedButton("开始计时", on_click=lambda _: start_timer()),
-        ft.Text("计时", style=ft.TextThemeStyle.TITLE_MEDIUM),
-        str_time_control,
-        ft.ElevatedButton("停止计时", on_click=lambda _: stop_timer()),
+        ft.ListView([
+            ft.Text("设置", style=ft.TextThemeStyle.TITLE_MEDIUM),
+            hour.get_widget(),
+            minute.get_widget(),
+            second.get_widget(),
+            ft.ElevatedButton("开始计时", on_click=lambda _: start_timer()),
+            ft.Text("计时", style=ft.TextThemeStyle.TITLE_MEDIUM),
+            str_time_control,
+            ft.ElevatedButton("停止计时", on_click=lambda _: stop_timer())
+        ], expand=True, spacing=5)
     ])
 
     def start_timer():
