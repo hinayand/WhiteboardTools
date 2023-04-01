@@ -13,12 +13,12 @@ def sys(page: ft.Page) -> ft.View:
     # window_tools.size_changer(page, 420, 355, 2)
     view = ft.View("/sys", [
         ft.AppBar(title=ft.Text("白板工具箱-系统相关")),
-        ft.GridView([
+        ft.ListView([
             ft.ElevatedButton(text="关闭白板", icon=ft.icons.POWER_OFF, on_click=lambda _: shutdown()),
             ft.ElevatedButton(text="重启白板", icon=ft.icons.REFRESH, on_click=lambda _: restart()),
             ft.ElevatedButton(text="注销", icon=ft.icons.LOGOUT, on_click=lambda _: logoff()),
             ft.ElevatedButton(text="取消关机", icon=ft.icons.CANCEL, on_click=lambda _: cancel_shutdown())
-        ], expand=1, max_extent=150, child_aspect_ratio=0.8, runs_count=4),
+        ], expand=True, spacing=5),
     ])
 
     def shutdown():
