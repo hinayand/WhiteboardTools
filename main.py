@@ -10,7 +10,7 @@ def main(page: ft.Page):
     page.fonts = {
         "Noto Sans": "./NotoSansCJKsc-Regular.ttf"
     }
-    page.theme = ft.Theme(use_material3=True, color_scheme_seed="white")
+    page.theme = ft.Theme(use_material3=True, color_scheme_seed="white", font_family="Microsoft YaHei UI")
     if page.client_storage.get("dark_mode") == True:
         page.theme_mode = ThemeMode.DARK
     else:

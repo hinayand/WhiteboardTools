@@ -7,17 +7,6 @@ def index(page: ft.Page):
     page.window_height = 500
     page.title = "白板工具箱"
 
-    def about():
-        dlg = ft.AlertDialog(title=ft.Text("关于", style=ft.TextThemeStyle.TITLE_LARGE),
-                             content=ft.Text("作者：hinayand\n本程序使用GPL2开源协议开源，违反开源协议者将追究到底！",
-                                             style=ft.TextThemeStyle.BODY_LARGE),
-                             actions=[
-                                ft.TextButton("好的", on_click=lambda _:DialogTools.DialogTools(
-                                    page).close_dlg(dlg))
-        ])
-        DialogTools.DialogTools(page).open_dlg(dlg)
-        page.update()
-
     view = ft.View("/", controls=[
         ft.AppBar(title=ft.Text(value="白板工具箱")),
         ft.ListView([
@@ -26,10 +15,7 @@ def index(page: ft.Page):
             ft.ElevatedButton(
                 text="小工具", icon=ft.icons.EGG, on_click=lambda _: page.go("/tools")),
             ft.ElevatedButton("设置", on_click=lambda _: page.go("/setting"), icon=ft.icons.SETTINGS)
-        ], expand=True, spacing=10),
-        ft.TextButton(
-            text="关于", icon=ft.icons.ACCOUNT_BOX, on_click=lambda _: about()
-        )
+        ], expand=True, spacing=10)
     ])
     view.vertical_alignment = ft.MainAxisAlignment.CENTER
     return view

@@ -5,7 +5,7 @@ from threading import Timer
 import time
 
 
-def clock(page :ft.Page):
+def clock(page: ft.Page):
     clock = ft.Text("", style=ft.TextThemeStyle.TITLE_LARGE, text_align=ft.TextAlign.CENTER)
 
     view = ft.View("/tools/clock", [

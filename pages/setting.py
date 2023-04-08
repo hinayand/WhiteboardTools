@@ -1,6 +1,9 @@
 import flet as ft
 from flet import ThemeMode
 
+from tools import DialogTools
+
+
 def setting(page: ft.Page) -> ft.View:
     material3_switch = ft.Switch(label="使用新版本的Material Design（默认启用，仅在本次会话中保留）", on_change=lambda _: theme_change())
     dark_mode_switch = ft.Switch(label="暗色模式（不支持旧版本Material Design）", on_change=lambda _: theme_change())
@@ -25,7 +28,10 @@ def setting(page: ft.Page) -> ft.View:
             ft.Text("开发者设置", style=ft.TextThemeStyle.BODY_LARGE),
             dev_feat_switch
         ], expand=True, spacing=5),
-        dev_feats
+        dev_feats,
+        ft.TextButton(
+            text="关于", icon=ft.icons.ACCOUNT_BOX, on_click=lambda _: about()
+        )
     ])
 
     def theme_change():
@@ -43,6 +49,17 @@ def setting(page: ft.Page) -> ft.View:
         else:
             dev_feats.visible = False
         page.client_storage.set("dev_feat", dev_feat_switch.value)
+        page.update()
+
+    def about():
+        dlg = ft.AlertDialog(title=ft.Text("关于", style=ft.TextThemeStyle.TITLE_LARGE),
+                             content=ft.Text("作者：hinayand\n本程序使用GPL2开源协议开源，违反开源协议者将追究到底！",
+                                             style=ft.TextThemeStyle.BODY_LARGE),
+                             actions=[
+                                ft.TextButton("好的", on_click=lambda _:DialogTools.DialogTools(
+                                    page).close_dlg(dlg))
+        ])
+        DialogTools.DialogTools(page).open_dlg(dlg)
         page.update()
     
     theme_change()
