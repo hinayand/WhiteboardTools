@@ -7,6 +7,7 @@ def dbg(page: ft.Page):
     global_view = ft.Markdown(f"{globals()}", selectable=True)
     timer = None
     refresh_switch = ft.Switch(label="继续刷新", on_change=lambda _: refresh_stat_change())
+    code_inject_input = ft.TextField(label="临时插入代码执行", multiline=True, max_lines=100)
     
     view = ft.View("/dbg", controls=[
         ft.AppBar(title=ft.Text("Debug Page")),
@@ -14,7 +15,11 @@ def dbg(page: ft.Page):
             local_view,
             global_view
         ], expand=True, spacing=10),
-        refresh_switch
+        ft.ListView([
+            refresh_switch,
+            code_inject_input,
+            ft.ElevatedButton("临时注入代码执行", on_click=lambda _: code_inject_runner())
+        ], expand=True, spacing=5)
     ])
 
     def refresh():
@@ -33,8 +38,13 @@ def dbg(page: ft.Page):
             refresh_switch.label = "继续刷新"
             page.update()
         else:
-            timer.cancel()
+            # timer.cancel()
             refresh_switch.label = "停止刷新"
             page.update()
+
+    def code_inject_runner():
+        exec(code_inject_input.value)
+        code_inject_input.value = ""
+        page.update()
 
     return view
