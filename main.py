@@ -22,10 +22,9 @@ def main(page: ft.Page):
         page.go(top_view.route)
 
     def route_change(route: ft.RouteChangeEvent):
+        # TODO: Add Route Change Function
         page.views.clear()
         page.views.append(index.index(page))
-        # TODO: Add Route Change Function
-
         # This is old page route codes.
         # match route.route:
         #     case "/sys":
@@ -44,7 +43,6 @@ def main(page: ft.Page):
         #         page.views.append(setting.setting(page))
 
         if route.route.split("/")[1] == "":
-            # page.views.append(index.index(page))
             pass
         elif route.route.split("/")[1] == "dbg":
             page.views.append(dbg.dbg(page))
