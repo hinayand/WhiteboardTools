@@ -8,9 +8,9 @@ from pages.small_tools import clock
 
 def main(page: ft.Page):
     page.fonts = {
-        "Noto Sans": "./NotoSansCJKsc-Regular.ttf"
+        "Harmony Sans": "./resource/HarmonyOS_Sans_SC_Regular.ttf"
     }
-    page.theme = ft.Theme(use_material3=True, color_scheme_seed="white", font_family="Microsoft YaHei UI")
+    page.theme = ft.Theme(use_material3=True, color_scheme_seed="white", font_family="Harmony Sans")
     if page.client_storage.get("dark_mode") == True:
         page.theme_mode = ThemeMode.DARK
     else:
@@ -69,4 +69,4 @@ def main(page: ft.Page):
     page.go(page.route)
 
 
-ft.app(target=main, assets_dir="./resource")
+ft.app(target=main)
