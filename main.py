@@ -1,10 +1,17 @@
 import flet as ft
+import sys
 from flet import ThemeMode
-from pages import sys, small_tools_picker, index, dbg, setting
+from pages import sys_setting, small_tools_picker, index, dbg, setting
 from pages.small_tools import random_school_id
 from pages.small_tools import timer
 from pages.small_tools import clock
 
+web_mode = False
+
+for i in range(0, len(sys.argv)):
+    if sys.argv[i] == "remote":
+        web_mode = True
+        break
 
 def main(page: ft.Page):
     page.fonts = {
@@ -24,7 +31,10 @@ def main(page: ft.Page):
     def route_change(route: ft.RouteChangeEvent):
         # TODO: Add Route Change Function
         page.views.clear()
-        page.views.append(index.index(page))
+        if web_mode:
+            page.views.append(index.index(page, web_mode=True))
+        else:
+            page.views.append(index.index(page))
         # This is old page route codes.
         # match route.route:
         #     case "/sys":
@@ -49,7 +59,7 @@ def main(page: ft.Page):
         elif route.route.split("/")[1] == "setting":
             page.views.append(setting.setting(page))
         elif route.route.split("/")[1] == "sys":
-            page.views.append(sys.sys(page))
+            page.views.append(sys_setting.sys(page))
         elif route.route.split("/")[1] == "tools":
             page.views.append(small_tools_picker.small_tools_picker(page))
             try:
@@ -67,6 +77,9 @@ def main(page: ft.Page):
     page.on_route_change = route_change
     page.on_view_pop = view_pop
     page.go(page.route)
+    page.client_storage.set("web_mode_verify", False)
 
-
-ft.app(target=main)
+if not web_mode:
+    ft.app(target=main)
+else:
+    ft.app(target=main, view=ft.WEB_BROWSER)
