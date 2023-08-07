@@ -15,8 +15,8 @@ def main(page: ft.Page):
     page.fonts = {
         "Harmony Sans": "./resource/HarmonyOS_Sans_SC_Regular.ttf"
     }
-    page.theme = ft.Theme(use_material3=True, color_scheme_seed="white", font_family="Harmony Sans")
-    if page.client_storage.get("dark_mode") == True:
+    page.theme = ft.Theme(use_material3=True, font_family="Harmony Sans")
+    if page.client_storage.get("dark_mode"):
         page.theme_mode = ThemeMode.DARK
     else:
         page.theme_mode = ThemeMode.LIGHT
@@ -24,7 +24,7 @@ def main(page: ft.Page):
     def view_pop(view):
         page.views.pop()
         top_view = page.views[-1]
-        page.go(top_view.router_func)
+        page.go(top_view.route)
 
     def route_change(route: ft.RouteChangeEvent):
         # TODO: Add Route Change Function
