@@ -3,14 +3,11 @@ import os
 import time
 import asyncio
 import threading as tr
-from tools import DialogTools, window_tools
+from tools import DialogTools
 
 
 def sys(page: ft.Page) -> ft.View:
     dialog_tools = DialogTools.DialogTools(page)
-    # page.window_height = 420
-    # page.window_width = 355
-    # window_tools.size_changer(page, 420, 355, 2)
     view = ft.View("/sys", [
         ft.AppBar(title=ft.Text("白板工具箱-系统相关")),
         ft.ListView([

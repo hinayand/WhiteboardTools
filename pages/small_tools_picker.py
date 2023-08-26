@@ -1,6 +1,6 @@
 import flet as ft
 from flet import TapEvent
-from tools import DialogTools, window_tools
+from tools import DialogTools
 
 
 def small_tools_picker(page: ft.Page):
