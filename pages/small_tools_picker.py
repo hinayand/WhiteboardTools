@@ -27,7 +27,7 @@ def small_tools_picker(page: ft.Page):
             case "时钟":
                 page.go("/tools/clock")
             case "ChatGPT":
-                page.go("/tools/chat-gpt")
+                page.go("/tools/chatgpt")
             case _:
                 dlg = ft.AlertDialog(title=ft.Text("白板工具箱", style=ft.TextThemeStyle.TITLE_LARGE),
                                      content=ft.Text("我们遇到了内部错误，请检查你是否选择了还未完成或未发布的小工具！"),

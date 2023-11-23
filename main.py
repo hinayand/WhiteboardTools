@@ -1,14 +1,7 @@
 import flet as ft
-import sys
 from flet import ThemeMode
+
 from router import router_func
-
-web_mode = False
-
-for i in range(0, len(sys.argv)):
-    if sys.argv[i] == "remote":
-        web_mode = True
-        break
 
 
 def main(page: ft.Page):
@@ -47,17 +40,13 @@ def main(page: ft.Page):
         #     case "/setting":
         #         page.views.append(setting.setting(page))
 
-        router_func(route.route, page, web_mode)
+        router_func(route.route, page)
 
         page.update()
 
     page.on_route_change = route_change
     page.on_view_pop = view_pop
     page.go(page.route)
-    page.client_storage.set("web_mode_verify", False)
 
 
-if not web_mode:
-    ft.app(target=main)
-else:
-    ft.app(target=main, view=ft.WEB_BROWSER)
+ft.app(target=main)

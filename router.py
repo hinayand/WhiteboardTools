@@ -3,15 +3,11 @@ from pages import sys_setting, small_tools_picker, index, dbg, setting
 from pages.small_tools import random_school_id
 from pages.small_tools import timer
 from pages.small_tools import clock
-from pages.small_tools import chat_gpt
+from pages.small_tools import chatgpt
 
 
-def router_func(route_str: str, page: ft.Page, web_mode: bool = False):
-    page.on_resize = lambda _: ...
-    if web_mode:
-        page.views.append(index.index(page, web_mode=True))
-    else:
-        page.views.append(index.index(page))
+def router_func(route_str: str, page: ft.Page):
+    page.views.append(index.index(page))
     if route_str.split("/")[1] == "":
         pass
     elif route_str.split("/")[1] == "dbg":
@@ -29,7 +25,7 @@ def router_func(route_str: str, page: ft.Page, web_mode: bool = False):
                 page.views.append(timer.timer(page))
             elif route_str.split("/")[2] == "clock":
                 page.views.append(clock.clock(page))
-            elif route_str.split("/")[2] == "chat-gpt":
-                page.views.append(chat_gpt.chat_gpt(page))
+            elif route_str.split("/")[2] == "chatgpt":
+                page.views.append(chatgpt.chatgpt(page))
         except IndexError:
             pass
